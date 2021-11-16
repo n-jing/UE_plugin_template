@@ -74,7 +74,7 @@ private:
 
 private:
 	/** Evaluation helper function - apply a snapshot pose to a pose */
-	void ApplyPose(const FmiHoYoPoseSnapshot& PoseSnapshot, FCompactPose& OutPose);
+	void ApplyPose(const FPoseSnapshot& PoseSnapshot, FCompactPose& OutPose);
 
 	/** Evaluation helper function - cache the bone mapping between two skeletal meshes */
 	void CacheBoneMapping(FName SourceMeshName, FName TargetMeshName, const TArray<FName>& InSourceBoneNames, const TArray<FName>& InTargetBoneNames);

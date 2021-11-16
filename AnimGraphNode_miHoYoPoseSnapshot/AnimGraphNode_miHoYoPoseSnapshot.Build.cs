@@ -15,6 +15,7 @@ public class AnimGraphNode_miHoYoPoseSnapshot : ModuleRules
             "BlueprintGraph",
             "KismetCompiler",
             "ToolMenus",
+            "AnimNode_miHoYoPoseSnapshot",
             "AnimGraph"
             });
     }

@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////
 // UAnimGraphNode_LocalCachePose
 
-#define LOCTEXT_NAMESPACE "A3Nodes"
+#define LOCTEXT_NAMESPACE "miHoYoPoseSnapshot"
 
 UAnimGraphNode_miHoYoPoseSnapshot::UAnimGraphNode_miHoYoPoseSnapshot(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -14,12 +14,12 @@ UAnimGraphNode_miHoYoPoseSnapshot::UAnimGraphNode_miHoYoPoseSnapshot(const FObje
 
 FText UAnimGraphNode_miHoYoPoseSnapshot::GetTooltipText() const
 {
-	return LOCTEXT("UAnimGraphNode_miHoYoPoseSnapshot_Tooltip", "Returns local space pose snapshot.");
+	return LOCTEXT("UAnimGraphNode_miHoYoPoseSnapshot_Tooltip", "Returns miHoYo local space pose snapshot.");
 }
 
 FText UAnimGraphNode_miHoYoPoseSnapshot::GetNodeTitle(ENodeTitleType::Type TitleType) const
 {
-	return LOCTEXT("UAnimGraphNode_miHoYoPoseSnapshot_Title", "Pose Snapshot");
+	return LOCTEXT("UAnimGraphNode_miHoYoPoseSnapshot_Title", "miHoYo Pose Snapshot");
 }
 
 #undef LOCTEXT_NAMESPACE

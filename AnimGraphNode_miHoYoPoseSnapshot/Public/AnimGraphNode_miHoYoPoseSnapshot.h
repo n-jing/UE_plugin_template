@@ -14,8 +14,8 @@ class UAnimGraphNode_miHoYoPoseSnapshot : public UAnimGraphNode_Base
 {
 	GENERATED_UCLASS_BODY()
 
-		UPROPERTY(EditAnywhere, Category = Settings)
-		FAnimNode_miHoYoPoseSnapshot Node;
+	UPROPERTY(EditAnywhere, Category = Settings)
+	FAnimNode_miHoYoPoseSnapshot Node;
 
 	// UEdGraphNode interface
 	virtual FText GetTooltipText() const override;

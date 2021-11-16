@@ -1,4 +1,3 @@
-
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "AnimNode_miHoYoPoseSnapshot.h"
@@ -16,7 +15,6 @@ FAnimNode_miHoYoPoseSnapshot::FAnimNode_miHoYoPoseSnapshot()
 	, TargetBoneNameMesh(NAME_None)
 {
 }
-
 
 void FAnimNode_miHoYoPoseSnapshot::PreUpdate(const UAnimInstance* InAnimInstance)
 {
@@ -55,7 +53,7 @@ void FAnimNode_miHoYoPoseSnapshot::Update_AnyThread(const FAnimationUpdateContex
 	// Evaluate any BP logic plugged into this node
 	GetEvaluateGraphExposedInputs().Execute(Context);
 
-	TRACE_ANIM_NODE_VALUE(Context, TEXT("Snapshot Name"), Snapshot.SnapshotName);
+	TRACE_ANIM_NODE_VALUE(Context, TEXT("Snapshot Name"), Snapshot.Pose.SnapshotName);
 }
 
 void FAnimNode_miHoYoPoseSnapshot::Evaluate_AnyThread(FPoseContext& Output)
@@ -68,30 +66,21 @@ void FAnimNode_miHoYoPoseSnapshot::Evaluate_AnyThread(FPoseContext& Output)
 	{
 	case EmiHoYoSnapshotSourceMode::NamedSnapshot:
 	{
-		const FPoseSnapshot test = *(Output.AnimInstanceProxy->GetPoseSnapshot(SnapshotName));
-		bool is_same_type = std::is_same<decltype(test), const FmiHoYoPoseSnapshot>::value;
-//		if (test->IsChildOf<FmiHoYoPoseSnapshot::StaticStruct()>())
-		{
-
-		}
-
-		const FmiHoYoPoseSnapshot* PoseSnapshotData = static_cast<const FmiHoYoPoseSnapshot*>((Output.AnimInstanceProxy->GetPoseSnapshot(SnapshotName)));
-		//const FmiHoYoPoseSnapshot* PoseSnapshotDataT = CastChecked<const FmiHoYoPoseSnapshot>(Output.AnimInstanceProxy->GetPoseSnapshot(SnapshotName));
-		//if (const FmiHoYoPoseSnapshot* PoseSnapshotData = con_cast<const FmiHoYoPoseSnapshot*>(Output.AnimInstanceProxy->GetPoseSnapshot(SnapshotName)))
-		{
-			ApplyPose(*PoseSnapshotData, OutPose);
-		}
+		//if (const FPoseSnapshot* PoseSnapshotData = Output.AnimInstanceProxy->GetPoseSnapshot(SnapshotName))
+		//{
+		//	ApplyPose(*PoseSnapshotData, OutPose);
+		//}
 	}
 	break;
 	case EmiHoYoSnapshotSourceMode::SnapshotPin:
 	{
-		ApplyPose(Snapshot, OutPose);
+		ApplyPose(Snapshot.Pose, OutPose);
 	}
 	break;
 	}
 }
 
-void FAnimNode_miHoYoPoseSnapshot::ApplyPose(const FmiHoYoPoseSnapshot& PoseSnapshot, FCompactPose& OutPose)
+void FAnimNode_miHoYoPoseSnapshot::ApplyPose(const FPoseSnapshot& PoseSnapshot, FCompactPose& OutPose)
 {
 	const TArray<FTransform>& LocalTMs = PoseSnapshot.LocalTransforms;
 	const FBoneContainer& RequiredBones = OutPose.GetBoneContainer();
