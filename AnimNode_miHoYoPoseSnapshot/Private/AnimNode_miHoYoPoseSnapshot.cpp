@@ -9,7 +9,7 @@
 
 FAnimNode_miHoYoPoseSnapshot::FAnimNode_miHoYoPoseSnapshot()
 	: SnapshotName(NAME_None)
-	, Mode(EmiHoYoSnapshotSourceMode::NamedSnapshot)
+	, Mode(EmiHoYoSnapshotSourceMode::SnapshotPin)
 	, MappedSourceMeshName(NAME_None)
 	, MappedTargetMeshName(NAME_None)
 	, TargetBoneNameMesh(NAME_None)
@@ -77,6 +77,12 @@ void FAnimNode_miHoYoPoseSnapshot::Evaluate_AnyThread(FPoseContext& Output)
 		ApplyPose(Snapshot.Pose, OutPose);
 	}
 	break;
+	}
+
+	FBlendedCurve& BCurve = Output.Curve;
+	for (auto& item : Snapshot.BSChannel)
+	{
+		BCurve.Set(item.Key, item.Value);
 	}
 }
 

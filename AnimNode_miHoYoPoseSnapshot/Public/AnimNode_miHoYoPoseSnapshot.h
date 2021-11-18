@@ -47,11 +47,11 @@ public:
 	virtual void GatherDebugData(FNodeDebugData& DebugData) override;
 
 	/** The name of the snapshot previously stored with SavePoseSnapshot */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Snapshot", meta = (PinShownByDefault))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Snapshot", meta = (PinHiddenByDefault))
 		FName SnapshotName;
 
 	/** Snapshot to use. This should be populated at first by calling SnapshotPose */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Snapshot", meta = (PinHiddenByDefault))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Snapshot", meta = (PinShownByDefault))
 		FmiHoYoPoseSnapshot Snapshot;
 
 	/** How to access the snapshot */

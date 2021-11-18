@@ -19,6 +19,7 @@ public:
 
 	FPoseSnapshot Pose;
 	/** Array of transforms per-bone */
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "miHoYoSnapshot")
-		TArray<float> BSChannel;
+	
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "miHoYoSnapshot")
+	TMap<USkeleton::AnimCurveUID, float> BSChannel;
 };

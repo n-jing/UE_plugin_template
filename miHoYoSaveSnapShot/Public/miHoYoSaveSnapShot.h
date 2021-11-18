@@ -13,10 +13,10 @@
 #include "miHoYoSaveSnapShot.generated.h"
 
 /**
- *
+ * custoum miHoYo SnapShot
  */
 UCLASS()
-class MIHOYOSAVESNAPSHOT_API UmiHoYoSaveSnapShot : public UBlueprintFunctionLibrary
+class UmiHoYoSaveSnapShot : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
